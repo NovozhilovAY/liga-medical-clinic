@@ -34,6 +34,8 @@ public class MessageRouterServiceImpl implements MessageRouterService {
                 case ERROR:
                     messageSenderService.sendMessage(messageDto, RabbitConfig.ERROR_QUEUE_NAME);
                     break;
+                default:
+                    return;
             }
         } catch (JsonProcessingException e) {
             System.out.println(e.getMessage());

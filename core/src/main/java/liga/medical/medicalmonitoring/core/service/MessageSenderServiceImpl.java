@@ -4,7 +4,6 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import liga.medical.dto.MessageDto;
 import liga.medical.medicalmonitoring.core.api.MessageSenderService;
-import liga.medical.medicalmonitoring.core.config.RabbitConfig;
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.stereotype.Service;
 

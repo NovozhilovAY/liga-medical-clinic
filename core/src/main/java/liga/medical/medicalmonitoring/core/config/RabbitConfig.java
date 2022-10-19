@@ -11,7 +11,6 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class RabbitConfig {
-    private static final String HOST = "localhost";
 
     public static final String ROUTER_QUEUE_NAME = "common_monitoring";
 
@@ -20,14 +19,19 @@ public class RabbitConfig {
     public static final String ALERT_QUEUE_NAME = "alert_queue";
 
     public static final String ERROR_QUEUE_NAME = "error_queue";
+
+    private static final String HOST = "localhost";
+
     @Bean
     public ConnectionFactory connectionFactory() {
         return new CachingConnectionFactory(HOST);
     }
+
     @Bean
     public AmqpAdmin amqpAdmin() {
         return new RabbitAdmin(connectionFactory());
     }
+
     @Bean
     public RabbitTemplate rabbitTemplate() {
         return new RabbitTemplate(connectionFactory());

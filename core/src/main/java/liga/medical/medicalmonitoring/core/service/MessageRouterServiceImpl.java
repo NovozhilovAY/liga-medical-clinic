@@ -2,8 +2,8 @@ package liga.medical.medicalmonitoring.core.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import liga.medical.dto.MessageDto;
-import liga.medical.dto.MessageType;
+import liga.medical.dto.dto.RabbitMessageDto;
+import liga.medical.dto.enums.MessageType;
 import liga.medical.medicalmonitoring.core.api.MessageRouterService;
 import liga.medical.medicalmonitoring.core.api.MessageSenderService;
 import liga.medical.medicalmonitoring.core.config.RabbitConfig;
@@ -22,7 +22,7 @@ public class MessageRouterServiceImpl implements MessageRouterService {
     @Override
     public void routeMessage(String message) {
         try {
-            MessageDto messageDto = objectMapper.readValue(message, MessageDto.class);
+            RabbitMessageDto messageDto = objectMapper.readValue(message, RabbitMessageDto.class);
             MessageType messageType = messageDto.getMessageType();
             switch (messageType) {
                 case DAILY:

@@ -1,5 +1,6 @@
 package liga.medical.medicalmonitoring.core.service;
 
+import liga.medical.dto.annotations.DbLog;
 import liga.medical.medicalmonitoring.core.api.MessageRouterService;
 import liga.medical.medicalmonitoring.core.config.RabbitConfig;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
@@ -13,6 +14,7 @@ public class MessageRouterListener {
         this.messageRouterService = messageRouterService;
     }
 
+    @DbLog
     @RabbitListener(queues = RabbitConfig.ROUTER_QUEUE_NAME)
     public void getAndRouteMessage(String message) {
         messageRouterService.routeMessage(message);
